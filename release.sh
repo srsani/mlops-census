@@ -5,5 +5,4 @@ pip3 install -r requirements.txt
 
 aws s3 ls
 
-sh dock_ecr.sh
- 
+sh docker_ecr.sh
