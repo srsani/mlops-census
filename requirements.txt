@@ -1,0 +1,13 @@
+# python==3.8
+numpy
+pandas
+scikit-learn
+pytest
+requests
+uvicorn
+gunicorn
+pandas-profiling
+fastapi==0.63.0
+hydra-core==1.0.6
+dvc
+dvc-s3

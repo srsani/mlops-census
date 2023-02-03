@@ -1,0 +1,35 @@
+main:
+  project_name:  ML deployment Heroku &FastAPI
+  experiment_name: pipeline
+
+data:
+  cat_features : [
+      "workclass",
+      "education",
+      "marital-status",
+      "occupation",
+      "relationship",
+      "race",
+      "sex",
+      "native-country",
+  ]
+inference:
+  columns:
+    [ 'age',
+      'workclass',
+      'fnlgt',
+      'education',
+      'marital-status',
+      'occupation',
+      'relationship',
+      'race',
+      'sex',
+      'hours-per-week',
+      'native-country'
+    ]
+  update_keys:
+      [
+        ["marital-status","marital_status"],
+        ["hours-per-week","hoursPerWeek"],
+        ["native-country","nativeCountry"]
+      ]
