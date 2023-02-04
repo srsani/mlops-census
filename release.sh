@@ -1,13 +1,10 @@
 branch_name=$1
 
 echo $branch_name
-pip3 install -r requirements.txt
+
+echo build and push Docker image to ECR
 sh docker_ecr.sh latest
 
-pwd
-
-ls -al 
-
-# docker context create ecs srs-fastapi
-# docker context use srs-fastapi
-# docker compose up
+docker context create ecs srs-fastapi
+docker context use srs-fastapi
+docker compose up
