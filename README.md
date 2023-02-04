@@ -1,17 +1,36 @@
-Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
+# MlOps FastAPI
 
-# Environment Set up
-* Download and install conda if you don’t have it already.
-    * Use the supplied requirements file to create a new environment, or
-    * conda create -n [envname] "python=3.8" scikit-learn pandas numpy pytest jupyter jupyterlab fastapi uvicorn -c conda-forge
-    * Install git either through conda (“conda install git”) or through your CLI, e.g. sudo apt-get git.
+This repo contains the code for training a Random Forest model on the `census.csv` data set using `sci-kit-learn` and `hydra-core`. The data and artefacts for this project are stored in `S3` by using `DVC`.
 
-## Strat API
+The model is then served using FastAPI and AWS `ECR`, and `ECS`.
 
+Some high-level `pytest` are also implemented to test the API performance.
+
+Furthermore, I used Docker compose to deploy the `ECS` infrastructure to serve the docker image that was built and pushed to `ECR`.
+
+Lastly, I have implemented a CI/CD pipeline using `GitHub Actions`.
+
+
+This repo contain the code for train a RF
+## Environment Set up
+
+All the code have tested using python3.8 and requirements.txt
+
+## Local dev/test:
+
+Start the FastAPI server with :
 -  `uvicorn src.main_api:app --reload`
 
 API doc is under `http://127.0.0.1:8000/docs`
-## Repositories
+## ECS
+
+- # docker context create ecs srs-fastapi
+# docker context use srs-fastapi
+# docker compose up
+
+
+- Clean and delete all the resources `docker compose down`
+
 * Create a directory for the project and initialize git.
     * As you work on the code, continually commit changes. Trained models you want to use in production must be committed to GitHub.
 * Connect your local git repo to GitHub.
