@@ -14,7 +14,14 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-        
+    - name: Setup DVC
+      uses: iterative/setup-dvc@v1
+    - name: Pull data from DVC
+      run: dvc pull -R
+    - name: Run Flake8
+      run: flake8
+    - name: Run pytest
+      run: python -m pytest 
     - name: main
       if: ${{ github.ref == 'refs/heads/main' }}
       run: bash release.sh "main" 

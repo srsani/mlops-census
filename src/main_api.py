@@ -65,9 +65,9 @@ def run_inference(data, cat_features):
     -------
     prediction
     """
-    model = joblib.load("model_output/model.joblib")
-    encoder = joblib.load("model_output/encoder.joblib")
-    lb = joblib.load("model_output/lb.joblib")
+    model = joblib.load("src/model_output/model.joblib")
+    encoder = joblib.load("src/model_output/encoder.joblib")
+    lb = joblib.load("src/model_output/lb.joblib")
 
     X, _, _, _ = process_data(X=data,
                               categorical_features=cat_features,
