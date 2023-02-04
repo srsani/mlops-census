@@ -7,6 +7,9 @@ sh docker_ecr.sh latest
 
 curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
 
-sudo docker context create ecs srs-fastapi
-docker context use srs-fastapi
-docker compose up
+docker context create ecs ecs-context --from-env
+docker --context ecs-context compose up
+
+# sudo docker context create ecs srs-fastapi
+# docker context use srs-fastapi
+# docker compose up
