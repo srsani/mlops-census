@@ -10,5 +10,5 @@ gunicorn
 pandas-profiling
 fastapi==0.63.0
 hydra-core==1.0.6
-dvc
-dvc-s3
+dvc==2.43.2
+dvc-s3==2.21.0
