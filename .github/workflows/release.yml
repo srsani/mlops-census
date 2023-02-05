@@ -32,5 +32,5 @@ jobs:
         ECR_URI: ${{ secrets.ECR_URI }}
       if: ${{ github.ref == 'refs/heads/main' }}
       run: |
-        echo ECR_URI
+        echo ${ECR_URI}
         bash release.sh "main"
