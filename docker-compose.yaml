@@ -1,6 +1,6 @@
 version: '3.4'
 services:
   web:
-    image: 628477620632.dkr.ecr.us-east-1.amazonaws.com/srs-fastapi:latest
+    image: ${ECR_URI}
     ports:
         - 8000:8000

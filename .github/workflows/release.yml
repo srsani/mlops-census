@@ -22,10 +22,15 @@ jobs:
       run: dvc pull -R
     - name: Run Flake8
       run: |
-        # stop the build if there are Python syntax errors or undefined names
+        echo ECR_URI: ${{secrets.ECR_URI}}
+        # check for syntax errors or undefined variables names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     - name: Run pytest
       run: python -m pytest 
     - name: main
+      env:
+        ECR_URI: ${{ secrets.ECR_URI }}
       if: ${{ github.ref == 'refs/heads/main' }}
-      run: bash release.sh "main" 
+      run: |
+        echo ECR_URI
+        bash release.sh "main"
