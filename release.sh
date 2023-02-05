@@ -8,5 +8,5 @@ sh docker_ecr.sh latest
 echo Installing compose-cli
 curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
 
-# docker context create ecs ecs-context --from-env
-# docker --context ecs-context compose up
+docker context create ecs ecs-context --from-env
+docker --context ecs-context compose up

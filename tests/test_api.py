@@ -3,7 +3,7 @@
 def test_get(client):
     r = client.get("/")
     assert r.status_code == 200
-    assert r.json() == {"message": "Greetings!"}
+    assert r.json() == {"message": "Greetings"}
 
 
 def test_post_one(client):
@@ -42,7 +42,7 @@ def test_post_two(client):
 
 def test_post_malformed(client):
     r = client.post("/", json={
-        "age": 32,
+        "age": 12,
         "workclass": "",
         "education": "Some-college",
         "maritalStatus": "",
