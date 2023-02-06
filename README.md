@@ -16,14 +16,11 @@ This repo contain the code for train a RF
 
 All the code have tested using `python3.8` and `requirements.txt`
 
-Run the training pipeline:
-
-- `cd src`
-- `python main_train.py`
-
 ## Local dev/test:
 
 ### Model training:
+
+Run the training pipeline:
 
 - `cd  src`
 - `python main_train.py`
