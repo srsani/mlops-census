@@ -114,10 +114,12 @@ async def startup_event():
     model = joblib.load("src/model_output/model.joblib")
     encoder = joblib.load("src/model_output/encoder.joblib")
     lb = joblib.load("src/model_output/lb.joblib")
+    print(model)
 
 
 @ app.get("/")
 async def get_items():
+    # print(model)
     return {"message": "Greetings"}
 
 

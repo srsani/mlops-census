@@ -26,7 +26,7 @@ Run the training pipeline:
 - `python main_train.py`
 ### pytests
 
-`python -m pytest src/tests -rP`
+`python -m pytest src/tests -rP -s -v`
 ### API
 Start the FastAPI server with :
 -  `uvicorn src.main_api:app --reload`
