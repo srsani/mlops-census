@@ -14,17 +14,29 @@ Lastly, I have implemented a CI/CD pipeline using `GitHub Actions`.
 This repo contain the code for train a RF
 ## Environment Set up
 
-All the code have tested using python3.8 and requirements.txt
+All the code have tested using `python3.8` and `requirements.txt`
+
+Run the training pipeline:
+
+- `cd src`
+- `python main_train.py`
 
 ## Local dev/test:
 
+### Model training:
+
+- `cd  src`
+- `python main_train.py`
+### pytests
+
+`python -m pytest src/tests -rP`
+### API
 Start the FastAPI server with :
 -  `uvicorn src.main_api:app --reload`
 
 API doc is under `http://127.0.0.1:8000/docs`
 
-
-# ECR
+## ECR
 
 Run the following command to push the latest docker image to ECR
 
@@ -57,3 +69,9 @@ On push to the main branch of this repo, GitHub Action will do the followings:
 2. Run Frun pytest
 3. Build and push the latest docker image to ECR
 4. update task in ECS
+
+## AWS
+
+The following images shows that the resources have launched in AWS to deploy the API
+
+![Load balancer](/screenshots/3.png)

@@ -13,6 +13,7 @@ import pandas as pd
 from pydantic import BaseModel
 from typing_extensions import Literal
 from src.data_processing.data_proc import process_data
+# from src.model_validation.model_valid import run_inference
 
 import sys
 sys.path.append('..')
@@ -71,11 +72,13 @@ def run_inference(data, cat_features):
 
     X, _, _, _ = process_data(X=data,
                               categorical_features=cat_features,
-                              encoder=encoder, lb=lb, training=False)
+                              encoder=encoder,
+                              lb=lb,
+                              training=False)
     preds = model.predict(X)
     prediction = lb.inverse_transform(preds)[0]
 
-    return prediction
+    return prediction.strip()
 
 
 with open('src/config.yaml', 'r') as f:
@@ -103,11 +106,14 @@ async def inference(input_data: ModelInput):
 
     input_data = input_data.dict()
     for new_key, old_key in change_keys:
-        input_data[new_key] = input_data.pop(old_key)
+        try:
+            input_data[new_key] = input_data.pop(old_key)
+        finally:
+            pass
 
     df = pd.DataFrame.from_dict([input_data], orient='columns')
     df = df[columns]
-    prediction = run_inference(df, cat_features)
+    prediction = run_inference(df, cat_features).strip()
 
     return {"prediction":
             prediction}

@@ -29,11 +29,16 @@ def get_train_test(root_path):
     df__test: pd.DataFrame
                 DataFrame for future test
     """
+    col_input_clean = ["workclass", "education",
+                       "marital_status", "occupation",
+                       "relationship", "race",
+                       "sex", "native_country"]
     try:
+        print('err')
         df = pd.read_csv(f"{root_path}/data/clean/census.csv")
 
-    except Exception as e:
-        print(e)
+    except Exception as exp_error:
+        print(exp_error)
         df = pd.read_csv(f"{root_path}/data/raw/census.csv")
         df.columns = [c.strip().replace('-', '_') for c in df.columns]
         df.replace({'?': None}, inplace=True)
@@ -41,10 +46,15 @@ def get_train_test(root_path):
         df.drop_duplicates(inplace=True)
         df.drop(["education_num", "capital_gain",
                 "capital_loss"], axis=1, inplace=True)
-        df.rename(columns={'hoursPerWeek': 'hours-per-week',
-                           "nativeCountry": "native-country"})
+
+        # clean space in names
+        for i in col_input_clean:
+            df[i] = df[i].apply(lambda x: x.strip())
         df.to_csv(f"{root_path}/data/clean/census.csv", index=False)
 
+        df.rename(columns={'hoursPerWeek': 'hours-per-week',
+                           "nativeCountry": "native-country"})
+        print('here')
     df__train, df__test = train_test_split(df,
                                            test_size=0.20,
                                            random_state=10,
@@ -61,7 +71,6 @@ def process_data(X,
                  training=True,
                  encoder=None,
                  lb=None,
-
                  ):
     """ Process the data used in the machine learning pipeline.
 

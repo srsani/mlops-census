@@ -3,14 +3,18 @@ Main script to train an RF model FastAPI instance
 author: srsani
 Date: 2023/01/27
 """
-from omegaconf import DictConfig
-import hydra
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from data_processing.data_proc import get_train_test
-from model_training.train_model import process_train_save_model
-from model_validation.model_valid import val_model
 
 import logging
+from omegaconf import DictConfig
+import hydra
+from src.data_processing.data_proc import get_train_test
+from src.model_training.train_model import process_train_save_model
+from src.model_validation.model_valid import val_model
+
 
 logging.basicConfig(
     filename='./logs/results2.log',
@@ -34,7 +38,7 @@ def go(config: DictConfig):
     """
 
     root_path = hydra.utils.get_original_cwd()
-    print(root_path)
+    logging.info(root_path)
     # Steps to execute
     cat_features = config['data']['cat_features']
 

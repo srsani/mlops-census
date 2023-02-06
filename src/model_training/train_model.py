@@ -3,14 +3,15 @@ Script to train model.
 author: srsani
 Date: 2023/01/23
 """
-from model_training.model_code import train_model
-import logging
-import pandas as pd
-from joblib import dump
+from src.data_processing.data_proc import process_data
 from sklearn.model_selection import train_test_split
-from data_processing.data_proc import process_data
+from joblib import dump
+import pandas as pd
+import logging
+from model_training.model_code import train_model
 import sys
-sys.path.append('..')
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 
 logging.basicConfig(

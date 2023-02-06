@@ -1,11 +1,11 @@
-import logging
-from datetime import date
-
-import joblib
-from data_processing.data_proc import process_data
 from model_training.model_code import compute_model_metrics
-
+from data_processing.data_proc import process_data
+import joblib
+from datetime import date
+import logging
 import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append('..')
 
 logging.basicConfig(
@@ -84,3 +84,28 @@ def val_model(test_df, cat_features, root_dir):
                             lb,
                             cat_features,
                             root_dir)
+
+
+def run_inference(data, cat_features):
+    """Load model and run inference
+    Parameters
+    ----------
+    root_path
+    data
+    cat_features
+
+    Returns
+    -------
+    prediction
+    """
+    model = joblib.load("src/model_output/model.joblib")
+    encoder = joblib.load("src/model_output/encoder.joblib")
+    lb = joblib.load("src/model_output/lb.joblib")
+
+    X, _, _, _ = process_data(X=data,
+                              categorical_features=cat_features,
+                              encoder=encoder, lb=lb, training=False)
+    preds = model.predict(X)
+    prediction = lb.inverse_transform(preds)[0]
+
+    return prediction

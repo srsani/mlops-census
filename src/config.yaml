@@ -6,12 +6,12 @@ data:
   cat_features : [
       "workclass",
       "education",
-      "marital-status",
+      "marital_status",
       "occupation",
       "relationship",
       "race",
       "sex",
-      "native-country",
+      "native_country",
   ]
 inference:
   columns:
@@ -19,17 +19,17 @@ inference:
       'workclass',
       'fnlgt',
       'education',
-      'marital-status',
+      'marital_status',
       'occupation',
       'relationship',
       'race',
       'sex',
       'hours-per-week',
-      'native-country'
+      'native_country'
     ]
   update_keys:
       [
-        ["marital-status","marital_status"],
+        ["marital_status","marital_status"],
         ["hours-per-week","hoursPerWeek"],
-        ["native-country","nativeCountry"]
+        ["native_country","nativeCountry"]
       ]
