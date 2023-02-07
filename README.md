@@ -84,8 +84,16 @@ The following images shows that the resources have launched in AWS to deploy the
 
 ![Load balancer](/screenshots/3.png)
 
-## API  call
+## Live API
 
 The following shows that the API is working
 
-![working api image](/screenshots/working_api.png)
+![working api post](/screenshots/working_api.png)
+
+Working API endpoint
+
+![working api URL](/screenshots/api.png)
+
+Working API doc:
+
+![working api URL](/screenshots/api2.png)
