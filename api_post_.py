@@ -1,6 +1,6 @@
 import requests
 
-data = {'age': 19,
+data = {'age': 33,
         'workclass': 'Private',
         'fnlgt': 149184,
         'education': 'HS-grad',
@@ -14,7 +14,7 @@ data = {'age': 19,
         }
 
 # local = "http://127.0.0.1:8000"
-aws = "http://mlops-loadb-15esodbag9ua0-f444e892dfcef8b8.elb.us-east-1.amazonaws.com:8000"
+aws = "http://mlops-loadb-1vls10v8z56rd-8e8763d7d81b9439.elb.us-east-1.amazonaws.com:8000"
 
 r = requests.post(f'{aws}/', json=data)
 
